@@ -10,7 +10,6 @@ import sys
 from typing import Dict, Any, Optional
 
 from .core import HARSanitiser
-from .utils import read_har_file, write_har_file
 
 
 def parse_args() -> argparse.Namespace:
@@ -94,10 +93,6 @@ def main() -> int:
             if config is None:
                 return 1
             logger.info(f"Loaded configuration from {args.config}")
-        
-        # Read input HAR file
-        logger.debug(f"Reading HAR file from {args.input_file}")
-        har_data = read_har_file(args.input_file)
         
         # Create sanitiser and process HAR file
         logger.debug("Initializing HAR sanitiser")
