@@ -11,7 +11,7 @@ import ijson
 import multiprocessing
 from tqdm import tqdm
 from typing import Dict, Any, List, Set, Union, Tuple, Iterator, Optional
-from datetime import datetime, UTC
+from datetime import datetime, timezone
 import logging
 
 from .utils import format_duration
@@ -722,7 +722,7 @@ class HARSanitiser:
         
         # Add sanitisation metadata
         meta = {
-            'sanitised_at': datetime.now(UTC).isoformat(),
+            'sanitised_at': datetime.now(timezone.utc).isoformat(),
             'sanitiser_version': '1.0.0',
             'skipped_entries': skipped_entries,
             'metrics': {
@@ -1089,7 +1089,7 @@ class HARSanitiser:
 
             # Add sanitisation metadata
             sanitised_har['log']['_meta'] = {
-                'sanitised_at': datetime.now(UTC).isoformat(),
+                'sanitised_at': datetime.now(timezone.utc).isoformat(),
                 'sanitiser_version': '1.0.0',
                 'skipped_entries': skipped_entries
             }
